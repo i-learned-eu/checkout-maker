@@ -104,11 +104,13 @@ function deletePage(el) {
 
 exportBtn.addEventListener("click", function() {
     pages = document.querySelectorAll(".page")
+    i = 0
     for (page of pages) {
         htmlToImage.toPng(page)
         .then(function (dataUrl) {
-            download(dataUrl, 'page.png');
-          });
+            download(dataUrl, document.querySelector(".page.titlePost span").innerHTML.toLowerCase().replace(/\s/g , "-") + "-" + i + '.png');
+            i++
+        });
     }
 })
 
@@ -129,7 +131,7 @@ function exportSave() {
         save.pages.push(object)
     }
 
-    download(JSON.stringify(save), document.querySelector(".page.titlePost span").innerHTML.toLowerCase + ".json")
+    download(JSON.stringify(save), document.querySelector(".page.titlePost span").innerHTML.toLowerCase().replace(/\s/g , "-") + ".json")
 }
 
 function restoreSave() {
