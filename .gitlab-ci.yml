@@ -9,6 +9,8 @@ prod-deploy-job:
     - echo "$SSH_EBANVM01_PRIVATE_KEY" > ~/.ssh/id_ed25519
     - chmod 600 ~/.ssh/id_ed25519
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - apk update
+    - apt add make
     - make build
     - rsync -az --delete -e "ssh -i ~/.ssh/id_ed25519" . --exclude="static/sass" --exclude="Makefile" --exclude=".git*" deploy@vm01.eban.eu.org:/var/www/ilearned-cb
   only: 
