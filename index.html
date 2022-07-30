@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="static/sass/styles.sass">
+    <link rel="stylesheet" href="https://cdn.ilearned.eu/css/base.min.css">
+    <title>Checkout maker</title>
+</head>
+<body>
+    <header>
+        <a href="/">
+          <div class="left">
+            <img src="https://cdn.ilearned.eu/img/logo.svg" alt="Logo de I Learned" />
+            <h2>Checkout Maker</h2>
+          </div>
+        </a>
+        <div onclick="openMenu()" id="menuIcon">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="right">
+          <a href="#">🏠 À Propos d'I learned</a>
+        </div>
+    </header>
+      
+    <main>
+        <div class="buttons">
+            <label class="inputWrapper btn btn-primary">
+                🖼️ Uploader le background
+                <input type="file" id="backgroundUpload">
+            </label>
+            <button id="export" class="btn btn-primary">⬇️ Exporter en images</button>  
+            <button id="exportSave" onclick="exportSave()" class="btn btn-secondary">💾 Exporter une sauvegarde</button>  
+            <label class="inputWrapper btn btn-secondary">
+                💾 Restaurer une sauvegarde
+                <input type="file" id="saveUpload">
+            </label>
+        </div>
+    
+        <div class="pagesList">
+            <div class="pageContainer">
+                <div class="page titlePost">
+                    <img src="/static/img/il-logo.png" alt="I Learned" class="ilearned-logo">
+                    <img src="/static/img/checkout-logo.png" alt="Checkout" class="checkout-logo">
+                    <span role="textbox" contenteditable class="editableSpan" >Ceci est le titre de ma news</span>
+                    <div class="location"></div>
+                    <div class="pageCta">Plus d'infos à suivre 👉</div>
+                </div>
+                <div class="toolbox">
+                    <button class="btn btn-secondary" onclick="newPageAfter(this.parentNode.parentNode)">📄 Nouvelle page après</button>
+                </div>
+            </div>
+        </div>    
+    </main>
+</body>
+<script src="https://cdn.ilearned.eu/js/header.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.9.0/html-to-image.js" integrity="sha512-8GQQGLSN+MYJfxnTNZm8HPIXz9TkAMeRcadyQO/oFsk+OAHOH7uTz5dAafi1ADICwul44a3JpV2vsolsjVeVGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="static/js/editor.js"></script>
+</html>
