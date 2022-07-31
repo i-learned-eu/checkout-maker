@@ -114,12 +114,45 @@ exportBtn.addEventListener("click", function() {
     }
 })
 
+if (navigator.userAgent.includes("Firefox")) {
+    document.onkeydown = function(ev) {
+        ev = ev || window.ev
+        if (ev.ctrlKey && ev.code == "KeyB") {
+            ev.preventDefault()
+            surround("b")
+        } else if (ev.ctrlKey && ev.code == "KeyI") {
+            ev.preventDefault()
+            surround("i")
+        }
+    }    
+}
+
+function surround(elementType) {
+    selection = window.getSelection()
+    if (!selection.focusNode.parentNode.textContent.includes(selection.toString() + selection.focusNode.textContent)) {
+        selection.focusNode.splitText(selection.anchorOffset)
+        selection.focusNode.splitText(selection.focusOffset)
+        selection = window.getSelection()
+        bolded = document.createElement(elementType)
+        bolded.innerHTML = selection.toString()
+        selection.focusNode.parentNode.insertBefore(bolded, selection.focusNode.nextSibling)
+        selection.focusNode.remove()
+
+    } else {
+        el = selection.focusNode.previousSibling
+        parent = el.parentNode;
+        while (el.firstChild) parent.insertBefore(el.firstChild, el);
+        parent.removeChild(el);
+        parent.normalize()
+    }
+}
+
 function exportSave() {
     pages = document.querySelectorAll(".page:not(.titlePost)")
     save = {
-        "background": background, 
         "title": document.querySelector(".page.titlePost span").innerHTML,
-        "pages": []
+        "pages": [],
+        "background": background
     }
 
     for (page of pages) {
