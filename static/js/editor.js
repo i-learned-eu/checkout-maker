@@ -8,7 +8,7 @@ function updateBgInDom() {
   const pages = document.querySelectorAll('.page');
 
   pages.forEach((page) => {
-    page.style.backgroundImage = `url('/noise.e486a8eb.png'), linear-gradient(0deg, rgba(43, 30, 62, 0.6), rgba(43, 30, 62, 0.6)), linear-gradient(180deg, rgba(51, 0, 102, 0) 0%, rgba(51, 0, 102, 0.85) 61.46%, rgba(51, 0, 102, 0.933954) 79.69%, #330066 99.99%, #330066 100%, #330066 100%), url('${background}')`;
+    page.style.backgroundImage = `url('/static/img/noise.png'), linear-gradient(0deg, rgba(43, 30, 62, 0.6), rgba(43, 30, 62, 0.6)), linear-gradient(180deg, rgba(51, 0, 102, 0) 0%, rgba(51, 0, 102, 0.85) 61.46%, rgba(51, 0, 102, 0.933954) 79.69%, #330066 99.99%, #330066 100%, #330066 100%), url('${background}')`;
   });
 }
 
@@ -33,6 +33,10 @@ function updatePagination() {
   });
 }
 
+function removeElement() {
+  this.parentNode.parentNode.remove();
+}
+
 function newPageAfter(el) {
   const newPage = document.createElement('div');
   newPage.classList.add('page');
@@ -40,11 +44,11 @@ function newPageAfter(el) {
   newPage.classList.add('content');
 
   const ilLogo = document.createElement('img');
-  ilLogo.src = '/il-logo.33af7e0c.png';
+  ilLogo.src = '/static/img/il-logo.png';
   ilLogo.classList.add('ilearned-logo');
 
   const checkoutLogo = document.createElement('img');
-  checkoutLogo.src = '/checkout-logo.4e9aeb64.png';
+  checkoutLogo.src = '/static/img/checkout-logo.png';
   checkoutLogo.classList.add('checkout-logo');
 
   const editableSpan = document.createElement('span');
@@ -72,7 +76,7 @@ function newPageAfter(el) {
   const deleteBtn = document.createElement('button');
   deleteBtn.classList.add('btn');
   deleteBtn.classList.add('btn-secondary');
-  deleteBtn.addEventListener('click', this.remove());
+  deleteBtn.addEventListener('click', removeElement);
   deleteBtn.innerHTML = '🗑️ Supprimer';
 
   const newPageBtn = document.createElement('button');
