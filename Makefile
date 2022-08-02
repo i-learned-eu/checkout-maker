@@ -1,7 +1,7 @@
 all: clean build
 
 build:
-	curl https://gitlab.ilearned.eu/i-learned/design-system/-/raw/main/sass/_fonts.sass > static/sass/_fontsCdn.sass
+	curl https://cdn.ilearned.eu/css/base.min.css > static/sass/base.css
 	mkdir static/css
 	sass --style compressed static/sass/styles.sass static/css/styles.min.css
 
