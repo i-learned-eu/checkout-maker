@@ -152,7 +152,7 @@ if (navigator.userAgent.includes('Firefox')) {
 function exportSave() {
   const pages = document.querySelectorAll('.page:not(.titlePost)');
   const save = {
-    title: document.querySelector('.page.titlePost span').innerHTML,
+    title: encodeURI(document.querySelector('.page.titlePost span').innerHTML),
     pages: [],
     background,
   };
@@ -175,7 +175,7 @@ function restoreSave() {
   saveReader.onloadend = () => {
     const save = JSON.parse(saveReader.result);
     background = save.background;
-    document.querySelector('.page.titlePost span').innerHTML = save.title;
+    document.querySelector('.page.titlePost span').innerHTML = decodeURI(save.title);
 
     save.pages.forEach((pageData) => {
       const actualPages = document.querySelectorAll('.page');
